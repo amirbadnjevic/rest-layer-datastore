@@ -88,6 +88,9 @@ func (e *Entity) Save() ([]datastore.Property, error) {
 	}
 	// Range over the payload and create the datastore.Properties
 	for k, v := range e.Payload {
+		if k == "_id" {
+			continue
+		}
 		prop := datastore.Property{
 			Name:    k,
 			Value:   v,
